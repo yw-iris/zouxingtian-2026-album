@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 300" width="110" height="300" role="img" aria-label="胶片">
+  <defs>
+    <filter id="fg" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="5" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 0.3 0"/>
+    </filter>
+  </defs>
+  <rect width="110" height="300" fill="#1b1a18"/>
+  <g fill="#0e0e0d">
+    <rect x="4" y="8" width="9" height="12"/><rect x="4" y="34" width="9" height="12"/><rect x="4" y="60" width="9" height="12"/><rect x="4" y="86" width="9" height="12"/>
+    <rect x="97" y="8" width="9" height="12"/><rect x="97" y="34" width="9" height="12"/><rect x="97" y="60" width="9" height="12"/><rect x="97" y="86" width="9" height="12"/>
+    <rect x="4" y="200" width="9" height="12"/><rect x="4" y="226" width="9" height="12"/><rect x="4" y="252" width="9" height="12"/><rect x="4" y="278" width="9" height="12"/>
+    <rect x="97" y="200" width="9" height="12"/><rect x="97" y="226" width="9" height="12"/><rect x="97" y="252" width="9" height="12"/><rect x="97" y="278" width="9" height="12"/>
+  </g>
+  <g>
+    <rect x="20" y="10" width="70" height="52" fill="#cfcfcb"/>
+    <path d="M20 50l16-16 12 12 14-18 28 22v12H20z" fill="#5f5f5c"/>
+    <rect x="52" y="24" width="16" height="12" fill="#a8a8a4"/>
+    <rect x="20" y="96" width="70" height="52" fill="#c9c9c5"/>
+    <path d="M20 148v-22h20v-14h22v14h28v22z" fill="#565654"/>
+    <circle cx="66" cy="118" r="9" fill="#e2e2de"/>
+    <rect x="20" y="182" width="70" height="52" fill="#c2c2be"/>
+    <path d="M20 234v-30l26-16 24 14 20-8v40z" fill="#4f4f4d"/>
+    <rect x="20" y="268" width="70" height="26" fill="#cbcbc7"/>
+    <path d="M20 294v-16h70v16z" fill="#5c5c59"/>
+  </g>
+  <g fill="#d8d8d4" opacity="0.85">
+    <rect x="20" y="64" width="70" height="3"/><rect x="20" y="150" width="70" height="3"/><rect x="20" y="236" width="70" height="3"/>
+  </g>
+  <rect width="110" height="300" filter="url(#fg)" opacity="0.5"/>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" width="520" height="360" role="img" aria-label="排球">
+  <defs>
+    <filter id="g2" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="17" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.85 0 0 0 0 0.8 0 0 0 0 0.72 0 0 0 0.2 0"/>
+    </filter>
+    <filter id="rough2" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="21" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="3.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <rect width="520" height="360" fill="#f5f0e2"/>
+  <path d="M0 258h520v102H0z" fill="#e9dfc6"/>
+  <g stroke="#3b3a33" stroke-width="2" fill="none" opacity="0.75">
+    <path d="M0 246h520"/>
+    <path d="M0 258v102M520 258v102" stroke-width="1" stroke-opacity="0.4"/>
+  </g>
+  <g opacity="0.5" stroke="#3b3a33" stroke-width="1.4" fill="none">
+    <path d="M60 252c0-40 40-46 40-8M300 252c0-40 40-46 40-8M460 252c0-40 40-46 40-8"/>
+  </g>
+  <g filter="url(#rough2)">
+    <g transform="translate(56 24)">
+      <circle cx="46" cy="46" r="42" fill="#f6f1e3" stroke="#3b3a33" stroke-width="2.6"/>
+      <path d="M46 4c-14 18-14 66 0 84M4 46c18-14 66-14 84 0M16 16c22 12 62 12 60 60M76 16c-22 12-62 12-60 60" fill="none" stroke="#3b3a33" stroke-width="2.2"/>
+    </g>
+    <g transform="translate(140 28)">
+      <text x="0" y="90" fill="#e06a4a" font-family="'STKaiti','KaiTi','楷体',serif" font-size="118" letter-spacing="6">排</text>
+      <text x="118" y="90" fill="#f0b93f" font-family="'STKaiti','KaiTi','楷体',serif" font-size="118" letter-spacing="6">球</text>
+      <text x="4" y="126" fill="#3b3a33" font-family="'Courier New',monospace" font-size="17" letter-spacing="5" opacity="0.8">VOLLEYBALL · TYPE</text>
+    </g>
+  </g>
+  <g filter="url(#rough2)">
+    <g transform="translate(66 168)">
+      <circle cx="30" cy="24" r="17" fill="#e8c9a0" stroke="#3b3a33" stroke-width="2.4"/>
+      <path d="M8 46c-10 4-14 16-14 28v22h72V74c0-12-4-24-14-28-10 8-34 8-44 0z" fill="#6d92a8" stroke="#3b3a33" stroke-width="2.4"/>
+      <path d="M16 96l-10 30M54 96l10 30" stroke="#3b3a33" stroke-width="3" stroke-linecap="round"/>
+      <path d="M62 54c14-10 22-24 26-40" stroke="#3b3a33" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M88 6c8 2 12 8 10 16-8 2-14-2-16-10z" fill="#f0b93f" stroke="#3b3a33" stroke-width="2"/>
+    </g>
+    <g transform="translate(196 176)">
+      <circle cx="28" cy="22" r="16" fill="#e8c9a0" stroke="#3b3a33" stroke-width="2.4"/>
+      <path d="M8 42c-10 4-14 16-14 26v20h66V68c0-10-4-22-14-26-9 8-29 8-38 0z" fill="#e8b96f" stroke="#3b3a33" stroke-width="2.4"/>
+      <path d="M14 88l-8 26M46 88l8 26" stroke="#3b3a33" stroke-width="3" stroke-linecap="round"/>
+      <path d="M0 50c-14-8-22-20-26-34" stroke="#3b3a33" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M-30 8c-8 2-12 8-10 16 8 2 14-2 16-10z" fill="#e06a4a" stroke="#3b3a33" stroke-width="2"/>
+    </g>
+  </g>
+  <g opacity="0.75">
+    <circle cx="330" cy="60" r="6" fill="#e06a4a"/><circle cx="368" cy="42" r="4" fill="#6d92a8"/><circle cx="398" cy="78" r="5" fill="#f0b93f"/>
+    <circle cx="430" cy="40" r="3.5" fill="#7d9b7a"/><circle cx="312" cy="96" r="4" fill="#f0b93f"/><circle cx="452" cy="96" r="4.5" fill="#e06a4a"/>
+    <circle cx="352" cy="126" r="3" fill="#6d92a8"/><circle cx="416" cy="128" r="3" fill="#7d9b7a"/>
+  </g>
+  <g stroke="#3b3a33" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.7">
+    <path d="M286 158c22-8 38-8 56-2M292 176c20-6 34-6 50-2M470 150c16-4 26-2 36 4"/>
+  </g>
+  <rect width="520" height="360" filter="url(#g2)" opacity="0.42"/>
+</svg>
