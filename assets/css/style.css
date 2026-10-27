@@ -716,18 +716,22 @@ body.past-reader .pill{opacity:0;transform:translateY(-6px);pointer-events:none}
   50%{box-shadow:0 0 22px 2px rgba(247,212,136,.16)}
 }
 
-/* 入场：书册落桌 */
+/* 入场：书册落桌
+   注意：入场动画只控制位移，不控制可见性。
+   若动画因页面未激活而停在首帧，内容仍然完整可见。 */
 @media (prefers-reduced-motion:no-preference){
   .book-scene{animation:bookIn 1.15s cubic-bezier(.19,.86,.24,1) both}
-  .topbar{animation:fadeIn .9s ease .15s both}
-  .nav{animation:fadeIn .9s ease .3s both}
-  .hint--open{animation:hintPulse 3.4s ease-in-out 1.4s infinite}
+  .topbar{animation:settle .9s cubic-bezier(.2,.8,.2,1) .15s both}
+  .nav{animation:settle .9s cubic-bezier(.2,.8,.2,1) .3s both}
 }
 @keyframes bookIn{
-  from{opacity:0;transform:translateY(30px) scale(.986)}
-  to{opacity:1;transform:none}
+  from{transform:translateY(28px) scale(.99)}
+  to{transform:none}
 }
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes settle{
+  from{transform:translateY(-10px)}
+  to{transform:none}
+}
 
 /* 降低动效偏好 */
 @media (prefers-reduced-motion:reduce){
