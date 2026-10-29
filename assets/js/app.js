@@ -1,5 +1,5 @@
 /* 走向明天 · 2026 毕业画册
-   滚动驱动的 3D 翻页：封面开合 → 镜头推近 → 逐页翻阅 */
+   滚动驱动的 3D 翻页：封面开合 → 逐页翻阅 → 印刷物随之散落 */
 (function () {
   'use strict';
 
@@ -23,6 +23,7 @@
   var btnView  = document.getElementById('btnView');
   var btnFull  = document.getElementById('btnFull');
   var progress = document.getElementById('progress');
+  var folio    = document.getElementById('folio');
   var dustWrap = document.getElementById('dust');
   var pageShadow = document.getElementById('pageShadow');
 
@@ -39,7 +40,7 @@
     return t * t * (3 - 2 * t);
   };
 
-  var fit = 0.8, flat = false, lastTurn = -2, lastOpen = -1, lastP = -1;
+  var fitOpen = 0.8, fitClosed = 0.8, flat = false, lastTurn = -2, lastOpen = -1, lastP = -1;
   var dots = [];
 
   /* ---------- 每页的 3D 层级：左页越靠前越高，右页越靠后越高 ---------- */
@@ -85,8 +86,10 @@
 
   function computeFit() {
     var w = stage.clientWidth, h = stage.clientHeight;
-    var f = Math.min((w * 0.94) / 1320, (h * 0.8) / 880);
-    return Math.max(0.26, f);
+    /* 合上时只看得到封面那一半，所以单独给一套更大的比例 */
+    fitOpen   = Math.max(0.2, Math.min((w * 0.88) / 1260, (h * 0.84) / 810));
+    fitClosed = Math.max(0.2, Math.min((w * 0.62) / 600,  (h * 0.70) / 562));
+    return fitOpen;
   }
 
   /* ---------- 翻页内容装载 ---------- */
@@ -131,23 +134,23 @@
     var openP = clamp(p, 0, 1);
     var oe = easeInOut(openP);
 
-    /* 镜头：合上时是斜俯视的桌面书册，打开后推平为阅读视角 */
-    var rx = flat ? 0 : lerp(58, 11, oe);
-    var ry = flat ? 0 : lerp(-24, 0, oe);
-    var rz = flat ? 0 : lerp(-2, 0, oe);
+    /* 镜头：合上时是斜俯视的册子，打开后推平为阅读视角 */
+    var rx = flat ? 0 : lerp(46, 8.5, oe);
+    var ry = flat ? 0 : lerp(-17, -2.4, oe);
+    var rz = flat ? 0 : lerp(-1.2, 0, oe);
     inner.style.setProperty('--rx', rx.toFixed(2) + 'deg');
     inner.style.setProperty('--ry', ry.toFixed(2) + 'deg');
     inner.style.setProperty('--rz', rz.toFixed(2) + 'deg');
     outer.style.setProperty('--ox', lerp(-300, 0, oe).toFixed(1) + 'px');
-    outer.style.setProperty('--oz', lerp(-60, 0, oe).toFixed(1) + 'px');
-    outer.style.setProperty('--shs', (0.58 + 0.42 * oe).toFixed(3));
-    outer.style.setProperty('--shy', lerp(-30, 10, oe).toFixed(1) + 'px');
-    scene.style.setProperty('--fit', (fit * lerp(1.08, 1, oe)).toFixed(4));
+    outer.style.setProperty('--oz', lerp(-40, 0, oe).toFixed(1) + 'px');
+    outer.style.setProperty('--shs', (0.52 + 0.48 * oe).toFixed(3));
+    outer.style.setProperty('--shy', lerp(-26, 12, oe).toFixed(1) + 'px');
+    scene.style.setProperty('--fit', lerp(fitClosed, fitOpen, oe).toFixed(4));
 
     /* 封面开合 */
     coverLeaf.style.setProperty('--ang', (-180 * oe).toFixed(2) + 'deg');
     coverLeaf.style.setProperty('--lift', (Math.sin(Math.PI * openP) * 10).toFixed(1) + 'px');
-    coverLeaf.style.setProperty('--bb', (0.45 + 0.55 * oe).toFixed(3));
+    coverLeaf.style.setProperty('--bb', (0.92 + 0.08 * oe).toFixed(3));
     coverLeaf.style.setProperty('--sweep', openP.toFixed(3));
     coverLeaf.style.setProperty('--sw', (Math.sin(Math.PI * openP) * 0.5).toFixed(3));
     coverEdge.style.opacity = clamp(1 - openP * 1.35, 0, 1).toFixed(3);
@@ -174,27 +177,31 @@
       flipLeaf.classList.add('is-on');
       flipLeaf.style.setProperty('--ang', (-180 * e).toFixed(2) + 'deg');
       flipLeaf.style.setProperty('--lift', (5 + Math.sin(Math.PI * f) * 16).toFixed(1) + 'px');
-      flipLeaf.style.setProperty('--bf', (1 - 0.42 * f).toFixed(3));
-      flipLeaf.style.setProperty('--bb', (0.45 + 0.55 * f).toFixed(3));
+      flipLeaf.style.setProperty('--bf', (1 - 0.1 * f).toFixed(3));
+      flipLeaf.style.setProperty('--bb', (0.94 - 0.06 * f).toFixed(3));
       flipLeaf.style.setProperty('--sh', (Math.sin(Math.PI * f) * 0.5).toFixed(3));
       flipLeaf.style.setProperty('--sweep', f.toFixed(3));
       flipLeaf.style.setProperty('--sw', (Math.sin(Math.PI * f) * 0.85).toFixed(3));
       pageShadow.style.setProperty('--sx', (100 - f * 100).toFixed(1) + '%');
       pageShadow.style.setProperty('--so', (Math.sin(Math.PI * f) * 0.85).toFixed(3));
+      /* 翻走的这一页上，散落的印刷物随之飘散 */
+      var chips = flipFront.querySelectorAll('.chip');
+      for (var ci = 0; ci < chips.length; ci++) chips[ci].style.setProperty('--sc', f.toFixed(4));
     } else {
       flipLeaf.classList.remove('is-on');
       pageShadow.style.setProperty('--so', '0');
     }
 
-    /* 语录纸条：档案跨页时浮出 */
-    var q = smoothstep(1.70, 1.97, p) * (1 - smoothstep(2.04, 2.34, p));
+    /* 语录纸条：只在翻页的那一瞬浮出，落定即隐 */
+    var q = smoothstep(1.54, 1.78, p) * (1 - smoothstep(1.88, 2.08, p));
     quote.style.setProperty('--q', q.toFixed(3));
 
     /* UI 状态 */
     var rest = p <= 1 ? 0 : clamp(Math.round(p - 1), 0, SPREADS - 1);
     for (var d = 0; d < dots.length; d++) dots[d].classList.toggle('is-on', d === rest);
+    if (folio) folio.textContent = 'Page ' + (rest + 1) + ' / ' + SPREADS;
 
-    /* 滚过画册后固定导航转为深色 */
+    /* 滚过画册后固定栏转为实底 */
     var past = window.pageYOffset > reader.offsetTop + reader.offsetHeight - window.innerHeight - 8;
     document.body.classList.toggle('past-reader', past);
 
@@ -219,9 +226,9 @@
       });
     }
 
-    hintOpen.classList.toggle('is-off', p > 0.12);
-    hintScroll.style.opacity = p > 0.55 ? '1' : '0';
-    btnToc.classList.toggle('is-on', p > 0.55);
+    if (hintOpen) hintOpen.classList.toggle('is-off', p > 0.12);
+    if (hintScroll) hintScroll.style.opacity = p > 0.55 ? '1' : '0';
+    if (btnToc) btnToc.classList.toggle('is-on', p > 0.55);
 
     /* 阅读进度 */
     if (progress) progress.style.setProperty('--p', (p / TOTAL).toFixed(4));
@@ -251,6 +258,19 @@
   function gotoCover() { scrollToY(0); }
 
   document.addEventListener('click', function (e) {
+    var st = e.target.closest('[data-step]');
+    if (st) {
+      e.preventDefault();
+      step(parseInt(st.getAttribute('data-step'), 10));
+      return;
+    }
+    var pn = e.target.closest('[data-panel]');
+    if (pn) {
+      e.preventDefault();
+      var sec = document.getElementById(pn.getAttribute('data-panel'));
+      if (sec) scrollToY(sec.offsetTop - 8);
+      return;
+    }
     var t = e.target.closest('[data-goto]');
     if (!t) return;
     e.preventDefault();
@@ -258,12 +278,14 @@
     if (g === 'cover') gotoCover(); else gotoSpread(parseInt(g, 10));
   });
 
-  hintOpen.addEventListener('click', function () { gotoSpread(0); });
-  btnToc.addEventListener('click', function () { gotoSpread(2); });
+  if (hintOpen) hintOpen.addEventListener('click', function () { gotoSpread(0); });
+  if (btnToc) btnToc.addEventListener('click', function () { gotoSpread(2); });
   if (btnBack) btnBack.addEventListener('click', function () { gotoCover(); });
 
-  document.getElementById('pgPrev').addEventListener('click', function () { step(-1); });
-  document.getElementById('pgNext').addEventListener('click', function () { step(1); });
+  var pgPrev = document.getElementById('pgPrev');
+  var pgNext = document.getElementById('pgNext');
+  if (pgPrev) pgPrev.addEventListener('click', function () { step(-1); });
+  if (pgNext) pgNext.addEventListener('click', function () { step(1); });
 
   function currentRest() {
     var p = clamp(window.pageYOffset / window.innerHeight, 0, TOTAL);
@@ -277,8 +299,8 @@
     else gotoSpread(Math.max(rest - 1, 0));
   }
 
-  /* 点击合上的书册即打开 */
-  document.getElementById('bookScene').addEventListener('click', function (e) {
+  /* 点击合上的册子即打开 */
+  scene.addEventListener('click', function (e) {
     if (e.target.closest('[data-goto]')) return;
     if (window.pageYOffset / window.innerHeight < 0.2) gotoSpread(0);
   });
@@ -317,14 +339,14 @@
       src.start();
     } catch (err) { /* 静默 */ }
   }
-  btnSound.addEventListener('click', function () {
+  if (btnSound) btnSound.addEventListener('click', function () {
     soundOn = !soundOn;
     btnSound.classList.toggle('is-off', !soundOn);
     if (soundOn) playTurn();
   });
 
   /* ---------- 平面 / 立体视图 ---------- */
-  btnView.addEventListener('click', function () {
+  if (btnView) btnView.addEventListener('click', function () {
     flat = !flat;
     btnView.classList.toggle('is-off', flat);
     btnView.title = flat ? '切换到立体视图' : '切换到平面视图';
@@ -332,7 +354,7 @@
   });
 
   /* ---------- 全屏 ---------- */
-  btnFull.addEventListener('click', function () {
+  if (btnFull) btnFull.addEventListener('click', function () {
     if (!document.fullscreenElement) {
       if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
     } else if (document.exitFullscreen) {
@@ -342,12 +364,20 @@
 
   /* ---------- 尺寸 ---------- */
   function onResize() {
-    fit = computeFit();
+    computeFit();
     render(clamp(window.pageYOffset / window.innerHeight, 0, TOTAL));
   }
   window.addEventListener('resize', onResize);
 
-  fit = computeFit();
+  computeFit();
   coverLeaf.classList.add('is-on');
   render(clamp(window.pageYOffset / window.innerHeight, 0, TOTAL));
+  /* 带 #锚点直达时浏览器可能在脚本之后才滚动，这里补一次重绘 */
+  window.addEventListener('hashchange', function () {
+    render(clamp(window.pageYOffset / window.innerHeight, 0, TOTAL));
+  });
+  setTimeout(function () {
+    lastP = -1;
+    render(clamp(window.pageYOffset / window.innerHeight, 0, TOTAL));
+  }, 120);
 })();

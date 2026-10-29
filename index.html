@@ -9,45 +9,65 @@
 </head>
 <body>
 
-<div class="desk-bg"></div>
-<div class="desk-grain"></div>
-<div class="desk-vignette"></div>
-<div class="grain"></div>
-<div class="progress" id="progress" aria-hidden="true"><i></i></div>
+<!-- ============ 浅色展台 ============ -->
+<div class="studio" aria-hidden="true">
+  <div class="studio__base"></div>
+  <div class="studio__shade"></div>
+  <div class="studio__glow"></div>
+  <div class="studio__grain"></div>
+</div>
 
-<!-- ============ 顶栏 ============ -->
-<header class="topbar">
-  <div class="brand">
-    <span class="brand__mark">走向明天</span>
-    <span class="brand__sub">2026 Graduation Album · Visual Communication Design</span>
+<!-- ============ 左侧固定栏 ============ -->
+<aside class="side" id="side">
+  <div class="side__head">
+    <span class="side__cn">沈知遥</span>
+    <div class="side__id">
+      <h1 class="side__name">Shen&nbsp;Zhiyao</h1>
+      <p class="side__role">视觉传达设计 <i>Visual Communication Design</i></p>
+      <p class="side__year">2026 届 · Graduating 2026 · Hangzhou</p>
+    </div>
   </div>
-  <button class="pill" id="btnToc" type="button">返回目录</button>
-  <div></div>
-</header>
 
-<!-- ============ 导航 ============ -->
-<nav class="nav" id="nav" aria-label="主导航">
-  <a href="#reader" data-goto="cover"><span class="cn">首页</span><span class="en">Home</span></a>
-  <a href="#reader" data-goto="2"><span class="cn">作品</span><span class="en">Work</span></a>
-  <a href="#reader" data-goto="1" data-panel="about"><span class="cn">关于</span><span class="en">About</span></a>
-  <a href="#reader" data-goto="6" data-panel="contact"><span class="cn">联系</span><span class="en">Contact</span></a>
-</nav>
+  <p class="side__intro">用纸、网格和一点点固执，把说不清的感觉讲成看得见的东西。这里收录 2022—2026 年间的六件作品、几段实习，和一些还没长成形的想法。</p>
+
+  <nav class="side__nav" id="nav" aria-label="主导航">
+    <a href="#reader" data-goto="cover"><span class="cn">首页</span><span class="en">Home</span><b>01</b></a>
+    <a href="#reader" data-goto="2"><span class="cn">目录</span><span class="en">Contents</span><b>07</b></a>
+    <a href="#reader" data-goto="3"><span class="cn">作品</span><span class="en">Works</span><b>06</b></a>
+    <a href="#reader" data-goto="1"><span class="cn">履历</span><span class="en">Resume</span><b>02</b></a>
+    <a href="#about" data-panel="about"><span class="cn">关于</span><span class="en">About</span><b>03</b></a>
+    <a href="#contact" data-panel="contact"><span class="cn">联系</span><span class="en">Contact</span><b>04</b></a>
+  </nav>
+
+  <ul class="side__links">
+    <li><span>Email</span><a href="mailto:zhiyao@zouxingtian.art">zhiyao@zouxingtian.art</a><i>↗</i></li>
+    <li><span>WeChat</span><span class="side__val">zhiyao_design</span><i>↗</i></li>
+    <li><span>Platform</span><span class="side__val">站酷 / Behance</span><i>↗</i></li>
+    <li><span>City</span><span class="side__val">杭州 · 可远程</span><i>↗</i></li>
+  </ul>
+
+  <div class="side__foot">
+    <div class="side__tools">
+      <button class="tool is-off" id="btnSound" type="button" aria-label="翻页音效" title="翻页音效">
+        <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 8.5a5 5 0 0 1 0 7"/></svg>
+      </button>
+      <button class="tool" id="btnView" type="button" aria-label="切换平面 / 立体视图" title="平面 / 立体">
+        <svg viewBox="0 0 24 24"><path d="M12 3.5 21 8v8l-9 4.5L3 16V8z"/><path d="M3 8l9 4.5L21 8"/><path d="M12 12.5V20"/></svg>
+      </button>
+      <button class="tool" id="btnFull" type="button" aria-label="全屏" title="全屏">
+        <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+      </button>
+    </div>
+    <p class="side__legend">2026 GRADUATION ALBUM<br>走向明天 · 作品集</p>
+  </div>
+</aside>
+
+<div class="progress" id="progress" aria-hidden="true"><i></i></div>
 
 <!-- ============ 3D 画册 ============ -->
 <section class="reader" id="reader">
   <div class="reader__stage" id="stage">
 
-    <!-- 桌面与灯光 -->
-    <div class="desk-pool" aria-hidden="true"></div>
-    <div class="lamp" aria-hidden="true">
-      <div class="lamp__cord"></div>
-      <div class="lamp__shade"></div>
-      <div class="lamp__cone"></div>
-      <div class="dust" id="dust" aria-hidden="true"></div>
-    </div>
-    <div class="bulb" aria-hidden="true"></div>
-
-    <!-- 画册 -->
     <div class="book-scene" id="bookScene">
       <div class="book-outer" id="bookOuter">
         <div class="book-shadow" aria-hidden="true"></div>
@@ -57,21 +77,25 @@
           <!-- 封面（可开合的活页） -->
           <div class="leaf leaf--cover" id="leafCover">
             <div class="leaf__face leaf__face--front">
-              <div class="cover">
-                <div class="cover__clip"></div>
-                <div class="cover__paper">
-                  <div class="cover__title">
-                    <h1>PERSONAL FILE<span>个 人 档 案</span></h1>
-                    <hr>
-                    <p>Shen Zhiyao · Visual Communication Design</p>
+              <div class="board board--cover">
+                <div class="board__cloth" aria-hidden="true"></div>
+                <p class="board__eyebrow">Graduation Album · 2026</p>
+                <div class="board__stamp">
+                  <h2>走向明天</h2>
+                  <p class="board__latin">TOWARDS&nbsp;TOMORROW</p>
+                  <span class="board__rule" aria-hidden="true"></span>
+                  <p class="board__owner">沈知遥 · 视觉传达设计</p>
+                </div>
+                <p class="board__foot">杭州 · 2026.06</p>
+                <div class="board__card">
+                  <img src="assets/art/portrait.svg" alt="沈知遥 证件照">
+                  <div class="board__cardtxt">
+                    <p class="board__cardname">Shen Zhiyao</p>
+                    <p class="board__cardsub">视觉传达设计 · 2026 届</p>
+                    <p class="board__cardid">NO. 26-0317</p>
                   </div>
                 </div>
-                <div class="cover__stamp">Top Secret</div>
-                <div class="cover__seal">毕 业 生<br>档 案</div>
-                <div class="cover__tabs">
-                  <span class="cover__tab"></span><span class="cover__tab"></span>
-                  <span class="cover__tab"></span><span class="cover__tab"></span>
-                </div>
+                <span class="board__seal">毕业<br>作品</span>
               </div>
             </div>
             <div class="leaf__face leaf__face--back">
@@ -85,80 +109,47 @@
           <!-- 纸叠厚度（合上时的书口） -->
           <div class="cover__edge" id="coverEdge" aria-hidden="true"></div>
 
-          <!-- 跨页 0 · 序 -->
+          <!-- 跨页 0 · 封面内页 + 序 -->
           <div class="spread" data-k="0" style="--k:0">
-            <div class="page page--left" data-page="0">
-              <div class="endpaper">
-                <div class="endpaper__ring"><i></i></div>
-                <p class="endpaper__verse">愿你带着初心，<br>奔赴下一场山海。<small>Keep the spark · walk towards tomorrow</small></p>
-              </div>
-            </div>
-            <div class="page page--right" data-page="1">
-              <div class="pg pg--cream">
-                <p class="kicker">Foreword · 序</p>
-                <div style="display:flex;gap:26px;margin-top:26px;flex:1;min-height:0">
-                  <h2 class="h-cn h-cn--big vertical" style="flex:0 0 auto;max-height:620px">在告别之前，<br>先看一看我们<br>走过的路。</h2>
-                  <div style="display:flex;flex-direction:column;gap:18px;flex:1;min-width:0">
-                    <p class="body indent">八年前的秋天，我们第一次推开这间画室的门，纸屑和松节油的味道扑面而来。那时候谁也说不清毕业以后要做什么，只是把每一次作业都当成一次小小的出发。</p>
-                    <p class="body indent">四年里，我们学会了把模糊的感受说清楚，把说不清的漂亮删掉，再把留下来的东西做扎实。一次次推翻重来之后，这本册子里留下的每一页，都是我们一起熬过的夜。</p>
-                    <p class="body indent">现在合上的是一本书，打开的是一条更长的路。愿你翻到这一页时，仍然敢想、敢做、敢走自己的路。</p>
-                    <p class="body" style="margin-top:auto;font-family:var(--serif-cn);font-size:15px;letter-spacing:.08em;color:#3b3a33">—— 视觉传达设计 2026 届全体</p>
+            <div class="page page--left" data-page="1">
+              <div class="board board--inner">
+                <div class="board__cloth" aria-hidden="true"></div>
+                <p class="board__eyebrow">Selected Works · 2022—2026</p>
+                <div class="board__card board__card--lg">
+                  <img src="assets/art/portrait.svg" alt="沈知遥 证件照">
+                  <div class="board__cardtxt">
+                    <p class="board__cardname">沈知遥</p>
+                    <p class="board__cardsub">Shen Zhiyao · Visual Communication Design</p>
+                    <p class="board__cardid">NO. 26-0317</p>
                   </div>
                 </div>
-                <p class="pnum pnum--right">01</p>
+                <p class="board__foot">六件作品 · 两段实习 · 一些还没说完的话</p>
+              </div>
+            </div>
+            <div class="page page--right" data-page="2">
+              <div class="pg pg--cream">
+                <p class="kicker">Foreword · 序</p>
+                <h2 class="h-cn h-cn--big" style="margin-top:22px">在告别之前，<br>先看一看我们<br>走过的路。</h2>
+                <div class="pg__cols">
+                  <p class="body indent">八年前的秋天，我们第一次推开这间画室的门，纸屑和松节油的味道扑面而来。那时候谁也说不清毕业以后要做什么，只是把每一次作业都当成一次小小的出发。</p>
+                  <p class="body indent">四年里，我们学会了把模糊的感受说清楚，把说不清的漂亮删掉，再把留下来的东西做扎实。</p>
+                  <p class="body indent">现在合上的是一本书，打开的是一条更长的路。</p>
+                </div>
+                <p class="pg__sig">—— 视觉传达设计 2026 届全体</p>
+                <p class="pnum pnum--right">02</p>
               </div>
             </div>
           </div>
 
-          <!-- 跨页 1 · 个人档案 -->
+          <!-- 跨页 1 · 履历 Resume -->
           <div class="spread" data-k="1" style="--k:1">
-            <div class="page page--left" data-page="2">
-              <div class="dossier dossier--left">
-                <div class="dossier__col">
-                  <img class="dossier__film" src="assets/art/filmstrip.svg" alt="胶片">
-                  <span class="tape tape--tl"></span>
-                  <p class="kicker" style="color:rgba(36,28,20,.62)">Archive · 个人档案</p>
-                  <h2 class="h-mono" style="margin-top:12px;color:#241c14">Things I Can Do</h2>
-                  <div class="dossier__skills">
-                    <div class="skill__row">
-                      <div class="skill__top"><span class="skill__cn">品牌视觉识别</span><span class="skill__en">Brand Identity</span></div>
-                      <div class="skill__bar"><i style="--w:88%"></i></div>
-                    </div>
-                    <div class="skill__row">
-                      <div class="skill__top"><span class="skill__cn">插画与手绘</span><span class="skill__en">Illustration</span></div>
-                      <div class="skill__bar"><i style="--w:92%"></i></div>
-                    </div>
-                    <div class="skill__row">
-                      <div class="skill__top"><span class="skill__cn">三维与动效</span><span class="skill__en">3D &amp; Motion</span></div>
-                      <div class="skill__bar"><i style="--w:74%"></i></div>
-                    </div>
-                    <div class="skill__row">
-                      <div class="skill__top"><span class="skill__cn">书籍与装帧</span><span class="skill__en">Editorial</span></div>
-                      <div class="skill__bar"><i style="--w:80%"></i></div>
-                    </div>
-                  </div>
-                  <div class="dossier__memo">
-                    <p>NO. 26 / 08 — PORTFOLIO V.3</p>
-                    <strong>能做的事：把想法变成看得见的样子。</strong>
-                  </div>
-                </div>
-                <p class="pnum pnum--left">02</p>
-              </div>
-            </div>
-            <div class="page page--right" data-page="3">
-              <div class="dossier dossier--right">
-                <div class="dossier__col">
-                  <div class="dossier__idcard">
-                    <img src="assets/art/portrait.svg" alt="证件照">
-                    <dl>
-                      <dt>NAME</dt><dd>沈知遥</dd>
-                      <dt>MAJOR</dt><dd>视觉传达设计</dd>
-                      <dt>NO.</dt><dd>26-0317</dd>
-                    </dl>
-                  </div>
-                  <span class="tape tape--tr"></span>
-                  <p class="kicker">File · 履历</p>
-                  <h2 class="h-mono" style="margin-top:12px">Internship Experience</h2>
+            <div class="page page--left" data-page="3">
+              <div class="pg pg--cream">
+                <p class="kicker">Resume · 履历</p>
+                <h2 class="res__name">沈知遥</h2>
+                <p class="res__role">视觉传达设计 · 2026 届 <i>Design engineer who writes layouts.</i></p>
+                <div class="res__sec">
+                  <h4>Experience · 实习经历</h4>
                   <div class="exp">
                     <div class="exp__item">
                       <p class="exp__date">2025.07 — 2025.09</p>
@@ -179,186 +170,255 @@
                       </ul>
                     </div>
                   </div>
-                  <span class="stamp stamp--a">已归档<br>Archived</span>
-                  <span class="stamp stamp--b">Verified<br>2026.06</span>
-                  <div class="badge" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.6 20 6v6c0 5-3.4 8.4-8 9.4C7.4 20.4 4 17 4 12V6z"/><path d="M8.6 12.2l2.4 2.4 4.4-4.8"/></svg>
+                </div>
+                <div class="res__sec">
+                  <h4>Education · 教育</h4>
+                  <div class="exp">
+                    <div class="exp__item">
+                      <p class="exp__date">2022 — 2026</p>
+                      <p class="exp__co">浙里大学 · 艺术与设计学院</p>
+                      <p class="exp__role">视觉传达设计 · 学士</p>
+                    </div>
                   </div>
                 </div>
-                <p class="pnum pnum--right">03</p>
+                <p class="pnum pnum--left">03</p>
+              </div>
+            </div>
+            <div class="page page--right" data-page="4">
+              <div class="pg pg--cream">
+                <p class="kicker">Selected · 选做项目</p>
+                <h2 class="h-cn h-cn--sm" style="margin-top:12px">项目与能力</h2>
+                <div class="res__sec">
+                  <h4>Projects · 项目</h4>
+                  <div class="exp">
+                    <div class="exp__item">
+                      <p class="exp__co">《山间来信》独立出版物</p>
+                      <p class="exp__role">书籍装帧 · 2024.09 — 2025.01</p>
+                      <ul class="exp__list"><li>纸张触感、折页节奏与 10.5pt 正文行距的完整装帧方案</li></ul>
+                    </div>
+                    <div class="exp__item">
+                      <p class="exp__co">「转角」社区咖啡品牌插画</p>
+                      <p class="exp__role">品牌插画 · 2025.03 — 2025.05</p>
+                      <ul class="exp__list"><li>以街道午后光线为线索的系列插画与应用物料</li></ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="res__sec">
+                  <h4>Skills & Tools · 能力与工具</h4>
+                  <ul class="res__skills">
+                    <li><span>品牌视觉识别</span><i>Brand Identity</i></li>
+                    <li><span>插画与手绘</span><i>Illustration</i></li>
+                    <li><span>书籍与装帧</span><i>Editorial</i></li>
+                    <li><span>三维与动效</span><i>3D / Motion</i></li>
+                    <li><span>字体排印</span><i>Typography</i></li>
+                    <li><span>常用工具</span><i>AI / PS / AE / C4D</i></li>
+                  </ul>
+                </div>
+                <div class="pg__foot">
+                  <p class="pg__folio">Page 2 / 7</p>
+                  <div class="pg__nav">
+                    <a href="#reader" data-step="-1">Prev</a>
+                    <a href="#reader" data-step="1">Next</a>
+                  </div>
+                </div>
+                <p class="pnum pnum--right">04</p>
               </div>
             </div>
           </div>
 
-          <!-- 跨页 2 · 作品目录 -->
+          <!-- 跨页 2 · 目录 -->
           <div class="spread" data-k="2" style="--k:2">
-            <div class="page page--left" data-page="4">
-              <div class="pg pg--sage">
-                <p class="kicker kicker--light">Contents · 作品目录</p>
-                <h2 class="h-cn" style="margin-top:30px;color:#f0ece0;line-height:1.85">请翻开，<br>这四年每一位<br>小小创作者的<br>花花世界。</h2>
-                <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end">
-                  <p class="body body--light" style="font-size:11.5px;max-width:250px">共收录 5 组作品、23 张画稿。点击右页目录可直接翻至对应作品。</p>
-                </div>
-                <p class="pnum pnum--right pnum--light">04</p>
-              </div>
-            </div>
-            <div class="page page--right" data-page="5">
-              <div class="pg pg--cream">
-                <p class="kicker">Index · 目录</p>
-                <h2 class="h-cn" style="margin-top:14px">作品目录</h2>
-                <div class="toc" id="toc">
-                  <a class="toc__item" href="#reader" data-goto="3"><span class="toc__no">01</span><span class="toc__name">街角的春天</span><span class="toc__leader"></span><span class="toc__pg">P.06</span></a>
-                  <a class="toc__item" href="#reader" data-goto="3"><span class="toc__no">02</span><span class="toc__name">排球</span><span class="toc__leader"></span><span class="toc__pg">P.07</span></a>
-                  <a class="toc__item" href="#reader" data-goto="4"><span class="toc__no">03</span><span class="toc__name">山间来信</span><span class="toc__leader"></span><span class="toc__pg">P.08</span></a>
-                  <a class="toc__item" href="#reader" data-goto="4"><span class="toc__no">04</span><span class="toc__name">一人一狗</span><span class="toc__leader"></span><span class="toc__pg">P.09</span></a>
-                  <a class="toc__item" href="#reader" data-goto="5"><span class="toc__no">05</span><span class="toc__name">墨海青山</span><span class="toc__leader"></span><span class="toc__pg">P.10</span></a>
-                  <a class="toc__item" href="#reader" data-goto="6"><span class="toc__no">06</span><span class="toc__name">走向明天</span><span class="toc__leader"></span><span class="toc__pg">P.12</span></a>
+            <div class="page page--left" data-page="5">
+              <div class="pg pg--tint">
+                <p class="kicker">Contents · 作品目录</p>
+                <h2 class="h-cn h-cn--big" style="margin-top:24px">请翻开，<br>这四年每一位<br>小小创作者的<br>花花世界。</h2>
+                <p class="body body--sm" style="margin-top:26px;max-width:300px">共收录 6 组作品、23 张画稿。点击右侧目录可直接翻至对应作品。</p>
+                <div class="mini">
+                  <figure><img src="assets/art/work-street.svg" alt="街角的春天"></figure>
+                  <figure><img src="assets/art/work-volleyball.svg" alt="排球"></figure>
+                  <figure><img src="assets/art/work-mountain.svg" alt="山间来信"></figure>
+                  <figure><img src="assets/art/work-dog.svg" alt="一人一狗"></figure>
+                  <figure><img src="assets/art/work-ink-l.svg" alt="墨海青山"></figure>
+                  <figure><img src="assets/art/work-ink-r.svg" alt="走向明天"></figure>
                 </div>
                 <div class="pg__foot">
-                  <div class="palette">
-                    <p class="toc__cat">Paper &amp; Ink · 纸与墨</p>
-                    <ul class="palette__list">
-                      <li><i style="--c:#c99a6b"></i><span>Kraft 牛皮纸</span></li>
-                      <li><i style="--c:#f5f1e6"></i><span>Paper 米白</span></li>
-                      <li><i style="--c:#5d7664"></i><span>Sage 松绿</span></li>
-                      <li><i style="--c:#e5a93b"></i><span>Amber 琥珀</span></li>
-                      <li><i style="--c:#b8382c"></i><span>Red 印红</span></li>
-                      <li><i style="--c:#20231f"></i><span>Ink 墨黑</span></li>
-                    </ul>
-                  </div>
-                  <div class="cats">
-                    <div><p class="toc__cat">Brand</p><p class="body" style="font-size:11.5px;margin-top:6px">街角的春天</p></div>
-                    <div><p class="toc__cat">Type</p><p class="body" style="font-size:11.5px;margin-top:6px">排球</p></div>
-                    <div><p class="toc__cat">Editorial</p><p class="body" style="font-size:11.5px;margin-top:6px">山间来信</p></div>
-                  </div>
+                  <p class="pg__folio">23 张画稿 · 2022—2026</p>
                 </div>
-                <p class="pnum pnum--right">05</p>
+                <p class="pnum pnum--left">05</p>
+              </div>
+            </div>
+            <div class="page page--right" data-page="6">
+              <div class="pg pg--cream">
+                <p class="kicker">Index · 目录</p>
+                <h2 class="h-cn h-cn--sm" style="margin-top:12px">作品目录</h2>
+                <div class="toc" id="toc">
+                  <a class="toc__item" href="#reader" data-goto="3"><span class="toc__no">01</span><span class="toc__name">街角的春天</span><span class="toc__leader"></span><span class="toc__pg">P.07</span></a>
+                  <a class="toc__item" href="#reader" data-goto="3"><span class="toc__no">02</span><span class="toc__name">排球</span><span class="toc__leader"></span><span class="toc__pg">P.09</span></a>
+                  <a class="toc__item" href="#reader" data-goto="4"><span class="toc__no">03</span><span class="toc__name">山间来信</span><span class="toc__leader"></span><span class="toc__pg">P.11</span></a>
+                  <a class="toc__item" href="#reader" data-goto="4"><span class="toc__no">04</span><span class="toc__name">一人一狗</span><span class="toc__leader"></span><span class="toc__pg">P.13</span></a>
+                  <a class="toc__item" href="#reader" data-goto="5"><span class="toc__no">05</span><span class="toc__name">墨海青山</span><span class="toc__leader"></span><span class="toc__pg">P.15</span></a>
+                  <a class="toc__item" href="#reader" data-goto="5"><span class="toc__no">06</span><span class="toc__name">走向明天</span><span class="toc__leader"></span><span class="toc__pg">P.17</span></a>
+                </div>
+                <div class="palette">
+                  <p class="toc__cat">Paper & Ink · 纸与墨</p>
+                  <ul class="palette__list">
+                    <li><i style="--c:#9fb0be"></i><span>Slate 石板蓝</span></li>
+                    <li><i style="--c:#fbfaf7"></i><span>Paper 米白</span></li>
+                    <li><i style="--c:#5d7664"></i><span>Sage 松绿</span></li>
+                    <li><i style="--c:#e5a93b"></i><span>Amber 琥珀</span></li>
+                    <li><i style="--c:#b8382c"></i><span>Red 印红</span></li>
+                    <li><i style="--c:#1c1e21"></i><span>Ink 墨黑</span></li>
+                  </ul>
+                </div>
+                <p class="pnum pnum--right">06</p>
               </div>
             </div>
           </div>
 
           <!-- 跨页 3 · 作品一二 -->
           <div class="spread" data-k="3" style="--k:3">
-            <div class="page page--left" data-page="6">
+            <div class="page page--left" data-page="7">
               <div class="pg pg--cream">
                 <div class="work">
+                  <p class="kicker">Work 01 · 品牌插画</p>
                   <div class="work__art"><img src="assets/art/work-street.svg" alt="街角的春天 插画"></div>
                   <h3 class="work__name">街角的春天<small>Brand Illustration</small></h3>
                   <p class="work__desc">为社区咖啡店「转角」绘制的品牌插画，把街道的午后光线、晾晒的衣角和一只总在等人的猫，都收进了同一张画面里。</p>
-                  <p class="tag" style="margin-top:12px"><b>标签</b> 充满想象力的未来世界 · 社区日常</p>
                   <div class="work__foot"><span>2025.03 — 2025.05</span><span>手绘 / 矢量</span></div>
                 </div>
-                <p class="pnum pnum--right">06</p>
+                <figure class="chip chip--photo" style="--x:56%;--y:59%;--w:34%;--r:3.4deg;--z:16px;--dx:26px;--dy:-40px;--dr:9deg">
+                  <img src="assets/art/album-cover.svg" alt="走向明天 封面">
+                  <figcaption>走向明天 · 主视觉</figcaption>
+                </figure>
+                <p class="pnum pnum--right">07</p>
               </div>
             </div>
-            <div class="page page--right" data-page="7">
+            <div class="page page--right" data-page="8">
               <div class="pg pg--cream">
                 <div class="work">
+                  <p class="kicker">Work 02 · 字体设计</p>
                   <div class="work__art"><img src="assets/art/work-volleyball.svg" alt="排球 字体设计"></div>
                   <h3 class="work__name">排球<small>Creative Typeface</small></h3>
                   <p class="work__desc">为校园联赛设计的中文字体实验：把发力的弧线拆成笔画，再让球网的交错成为字身的一部分。</p>
-                  <p class="tag" style="margin-top:12px"><b>标签</b> 少年感 · 赛场 · 字体实验</p>
                   <div class="work__foot"><span>2024.11</span><span>字体 / 海报</span></div>
                 </div>
-                <p class="pnum pnum--right">07</p>
+                <figure class="chip chip--photo" style="--x:5%;--y:62%;--w:32%;--r:-2.6deg;--z:14px;--dx:-22px;--dy:-34px;--dr:-8deg">
+                  <img src="assets/art/work-dog.svg" alt="一人一狗 角色设定">
+                  <figcaption>一人一狗 · 角色设定</figcaption>
+                </figure>
+                <p class="pnum pnum--right">08</p>
               </div>
             </div>
           </div>
 
           <!-- 跨页 4 · 作品三四 -->
           <div class="spread" data-k="4" style="--k:4">
-            <div class="page page--left" data-page="8">
+            <div class="page page--left" data-page="9">
               <div class="pg pg--cream">
                 <div class="work">
+                  <p class="kicker">Work 03 · 书籍装帧</p>
                   <div class="work__art"><img src="assets/art/work-mountain.svg" alt="山间来信 书籍装帧"></div>
                   <h3 class="work__name">山间来信<small>Book Design</small></h3>
                   <p class="work__desc">独立出版物《山间来信》的装帧设计，从纸张触感、折页节奏到正文的 10.5pt 行距，都为了让人愿意慢下来读。</p>
-                  <p class="tag" style="margin-top:12px"><b>标签</b> 慢阅读 · 纸张 · 山与雾</p>
                   <div class="work__foot"><span>2024.09 — 2025.01</span><span>装帧 / 插画</span></div>
                 </div>
-                <p class="pnum pnum--right">08</p>
-              </div>
-            </div>
-            <div class="page page--right" data-page="9">
-              <div class="pg pg--cream">
-                <div class="work">
-                  <div class="work__art"><img src="assets/art/work-dog.svg" alt="一人一狗 角色设定"></div>
-                  <h3 class="work__name">一人一狗<small>Character Design</small></h3>
-                  <p class="work__desc">短片《一人一狗》的角色设定稿，用最简单的几何形概括出性格：一个总是慢半拍的旅人，和一只更着急的狗。</p>
-                  <p class="tag" style="margin-top:12px"><b>标签</b> 慢半拍 · 陪伴 · 几何造型</p>
-                  <div class="work__foot"><span>2024.05</span><span>角色 / 分镜</span></div>
+                <div class="chip chip--ticket" style="--x:8%;--y:70%;--r:-3deg;--z:12px;--dx:-18px;--dy:-30px;--dr:-7deg">
+                  <b>08</b><span>山间来信</span>
                 </div>
                 <p class="pnum pnum--right">09</p>
               </div>
             </div>
-          </div>
-
-          <!-- 跨页 5 · 集体创作 -->
-          <div class="spread" data-k="5" style="--k:5">
-            <div class="page page--left" data-page="10">
+            <div class="page page--right" data-page="10">
               <div class="pg pg--cream">
                 <div class="work">
-                  <div class="work__art"><img src="assets/art/work-ink-l.svg" alt="墨海青山 集体创作 左页"></div>
-                  <h3 class="work__name">墨海青山<small>Collective Work</small></h3>
-                  <p class="work__desc">十二个人共创的毕业展主视觉：每人认领一座山与一个字，最后合成一面长卷。</p>
-                  <p class="tag" style="margin-top:12px"><b>标签</b> 水墨 · 长卷 · 十二个人</p>
-                  <div class="work__foot"><span>2026.03</span><span>策展 / 书法</span></div>
+                  <p class="kicker">Work 04 · 角色设定</p>
+                  <div class="work__art"><img src="assets/art/work-dog.svg" alt="一人一狗 角色设定"></div>
+                  <h3 class="work__name">一人一狗<small>Character Design</small></h3>
+                  <p class="work__desc">短片《一人一狗》的角色设定稿，用最简单的几何形概括出性格：一个总是慢半拍的旅人，和一只更着急的狗。</p>
+                  <div class="work__foot"><span>2024.05</span><span>角色 / 分镜</span></div>
                 </div>
+                <figure class="chip chip--photo" style="--x:58%;--y:60%;--w:32%;--r:2.8deg;--z:16px;--dx:24px;--dy:-38px;--dr:8deg">
+                  <img src="assets/art/work-mountain.svg" alt="山间来信 书籍装帧">
+                  <figcaption>山间来信 · 折页节奏</figcaption>
+                </figure>
                 <p class="pnum pnum--right">10</p>
               </div>
             </div>
-            <div class="page page--right" data-page="11">
+          </div>
+
+          <!-- 跨页 5 · 作品五六 -->
+          <div class="spread" data-k="5" style="--k:5">
+            <div class="page page--left" data-page="11">
               <div class="pg pg--cream">
                 <div class="work">
-                  <div class="work__art"><img src="assets/art/work-ink-r.svg" alt="墨海青山 集体创作 右页"></div>
-                  <p class="kicker" style="margin-top:16px">Ink Sea · 长卷局部</p>
-                  <p class="work__desc" style="margin-top:12px">展期 2026.06.12 — 07.05，城市美术馆 2 号厅。现场保留了我负责的「青山」与落款印章。</p>
-                  <div class="work__foot" style="margin-top:auto"><span>十二人 · 每人一个字</span><span>P.11</span></div>
+                  <p class="kicker">Work 05 · 集体创作</p>
+                  <div class="work__art"><img src="assets/art/work-ink-l.svg" alt="墨海青山 集体创作 左页"></div>
+                  <h3 class="work__name">墨海青山<small>Collective Work</small></h3>
+                  <p class="work__desc">十二个人共创的毕业展主视觉：每人认领一座山与一个字，最后合成一面长卷。</p>
+                  <div class="work__foot"><span>2026.03</span><span>策展 / 书法</span></div>
                 </div>
                 <p class="pnum pnum--right">11</p>
+              </div>
+            </div>
+            <div class="page page--right" data-page="12">
+              <div class="pg pg--cream">
+                <div class="work">
+                  <p class="kicker">Work 06 · 主视觉</p>
+                  <div class="work__art"><img src="assets/art/work-ink-r.svg" alt="墨海青山 长卷局部"></div>
+                  <h3 class="work__name">走向明天<small>Graduation Key Visual</small></h3>
+                  <p class="work__desc">展期 2026.06.12 — 07.05，城市美术馆 2 号厅。现场保留了我负责的「青山」与落款印章。</p>
+                  <div class="work__foot"><span>十二人 · 每人一个字</span><span>2026.06</span></div>
+                </div>
+                <div class="chip chip--ticket" style="--x:6%;--y:72%;--r:2.4deg;--z:12px;--dx:-16px;--dy:-28px;--dr:6deg">
+                  <b>12</b><span>长卷 · 局部</span>
+                </div>
+                <p class="pnum pnum--right">12</p>
               </div>
             </div>
           </div>
 
           <!-- 跨页 6 · 后记与联系 -->
           <div class="spread" data-k="6" style="--k:6">
-            <div class="page page--left" data-page="12">
-              <div class="pg pg--sage">
-                <p class="kicker kicker--light">Afterword · 后记</p>
-                <h2 class="h-cn" style="margin-top:26px;color:#f0ece0;line-height:1.7">谢谢，<br>走到这里。</h2>
-                <p class="body body--light indent" style="margin-top:22px;font-size:12.5px">感谢每一位在深夜帮我改稿的人，感谢那些被推翻又被重做的方案，也感谢在最后一天仍然愿意重画一遍的自己。</p>
-                <p class="body body--light indent" style="margin-top:14px;font-size:12.5px">这本画册会一直留在案头。它不证明我们有多厉害，只证明我们认真做过。</p>
-                <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end">
-                  <p class="body" style="font-family:var(--serif-cn);font-size:14px;color:rgba(240,236,224,.85);letter-spacing:.1em">沈知遥 · 2026.06</p>
+            <div class="page page--left" data-page="13">
+              <div class="pg pg--tint">
+                <p class="kicker">Afterword · 后记</p>
+                <h2 class="h-cn h-cn--big" style="margin-top:22px">谢谢，<br>走到这里。</h2>
+                <p class="body indent" style="margin-top:22px">感谢每一位在深夜帮我改稿的人，感谢那些被推翻又被重做的方案，也感谢在最后一天仍然愿意重画一遍的自己。</p>
+                <p class="body indent" style="margin-top:14px">这本画册会一直留在案头。它不证明我们有多厉害，只证明我们认真做过。</p>
+                <div class="pg__foot">
+                  <p class="pg__sig">沈知遥 · 2026.06</p>
                 </div>
-                <p class="pnum pnum--right pnum--light">12</p>
+                <p class="pnum pnum--left">13</p>
               </div>
             </div>
-            <div class="page page--right" data-page="13">
-              <div class="pg pg--ink">
-                <p class="kicker kicker--light">Contact · 联系</p>
-                <h2 class="h-cn" style="margin-top:22px;color:#f0ece0">找我聊聊</h2>
-                <div class="exp" style="margin-top:28px">
-                  <div class="exp__item" style="border-color:rgba(247,212,136,.6)">
-                    <p class="exp__date" style="color:var(--amber-hi)">EMAIL</p>
-                    <p class="exp__co" style="color:#f0ece0">zhiyao@zouxingtian.art</p>
+            <div class="page page--right" data-page="14">
+              <div class="pg pg--cream">
+                <p class="kicker">Contact · 联系</p>
+                <h2 class="h-cn h-cn--sm" style="margin-top:14px">找我聊聊</h2>
+                <div class="exp" style="margin-top:24px">
+                  <div class="exp__item">
+                    <p class="exp__date">EMAIL</p>
+                    <p class="exp__co">zhiyao@zouxingtian.art</p>
                   </div>
-                  <div class="exp__item" style="border-color:rgba(247,212,136,.6)">
-                    <p class="exp__date" style="color:var(--amber-hi">WECHAT</p>
-                    <p class="exp__co" style="color:#f0ece0">zhiyao_design</p>
+                  <div class="exp__item">
+                    <p class="exp__date">WECHAT</p>
+                    <p class="exp__co">zhiyao_design</p>
                   </div>
-                  <div class="exp__item" style="border-color:rgba(247,212,136,.6)">
-                    <p class="exp__date" style="color:var(--amber-hi">PORTFOLIO</p>
-                    <p class="exp__co" style="color:#f0ece0">站酷 /  Behance</p>
+                  <div class="exp__item">
+                    <p class="exp__date">PLATFORM</p>
+                    <p class="exp__co">站酷 / Behance</p>
                   </div>
                 </div>
-                <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
-                  <p class="body body--light" style="font-size:11px">杭州 · 欢迎寄信<br>纸质信件会收到回信。</p>
-                  <a class="toc__item" href="#reader" data-goto="cover" id="btnBack" style="width:auto;border:0;padding:0;color:rgba(240,236,224,.8);font-family:var(--serif-cn);letter-spacing:.14em;text-decoration:none">
-                    <span class="toc__name">回到封面</span><span class="toc__leader" style="border-color:rgba(240,236,224,.3)"></span><span class="toc__pg" style="color:rgba(240,236,224,.5)">↺</span>
+                <div class="pg__foot">
+                  <p class="body body--sm">杭州 · 欢迎寄信<br>纸质信件会收到回信。</p>
+                  <a class="toc__item back" href="#reader" data-goto="cover" id="btnBack">
+                    <span class="toc__name">回到封面</span><span class="toc__leader"></span><span class="toc__pg">↺</span>
                   </a>
                 </div>
-                <p class="pnum pnum--right pnum--light">13</p>
+                <figure class="chip chip--film" style="--x:64%;--y:9%;--w:13%;--r:-2.4deg;--z:10px;--dx:14px;--dy:-26px;--dr:-6deg">
+                  <img src="assets/art/filmstrip.svg" alt="胶片">
+                </figure>
+                <p class="pnum pnum--right">14</p>
               </div>
             </div>
           </div>
@@ -370,35 +430,32 @@
           </div>
         </div>
       </div>
-
-      <!-- 语录纸条（叠加在画册之上） -->
-      <div class="quote" id="quote" aria-hidden="true">
-        <span>世上没有真正的绝境，</span>
-        <span>只有被思想困住的囚徒。</span>
-      </div>
-
-      <!-- 交互提示 -->
-      <button class="hint hint--open" id="hintOpen" type="button">点击打开档案 · 或向下滚动</button>
     </div>
+
+    <!-- 语录纸条（叠加在画册之上） -->
+    <div class="quote" id="quote" aria-hidden="true">
+      <span>世上没有真正的绝境，</span>
+      <span>只有被思想困住的囚徒。</span>
+    </div>
+
+    <!-- 右侧竖排题识 -->
+    <p class="stage__edge" aria-hidden="true">视觉传达设计 · 2026 届 — Shen Zhiyao</p>
+
+    <!-- 交互提示 -->
+    <button class="hint hint--open" id="hintOpen" type="button">点击打开画册 · 或向下滚动</button>
+    <p class="hint hint--scroll" id="hintScroll">滑动滚轮或点击翻页 · Scroll to turn the page</p>
 
     <!-- 底部 UI -->
     <div class="reader__ui">
-      <p class="hint" id="hintScroll">滑动滚轮或点击翻页 · Scroll to turn the page</p>
       <div class="dots" id="dots"></div>
+      <p class="reader__legend">封面 <i></i> 内页 <i></i> 印刷物 <i></i> 索引</p>
     </div>
-    <button class="pager pager--prev" id="pgPrev" type="button" aria-label="上一页">‹</button>
-    <button class="pager pager--next" id="pgNext" type="button" aria-label="下一页">›</button>
 
-    <div class="tools">
-      <button class="tool is-off" id="btnSound" type="button" aria-label="翻页音效" title="翻页音效">
-        <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 8.5a5 5 0 0 1 0 7"/></svg>
-      </button>
-      <button class="tool" id="btnView" type="button" aria-label="切换平面 / 立体视图" title="平面 / 立体">
-        <svg viewBox="0 0 24 24"><path d="M12 3.5 21 8v8l-9 4.5L3 16V8z"/><path d="M3 8l9 4.5L21 8"/><path d="M12 12.5V20"/></svg>
-      </button>
-      <button class="tool" id="btnFull" type="button" aria-label="全屏" title="全屏">
-        <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
-      </button>
+    <div class="stage__ctrl">
+      <button class="pill" id="btnToc" type="button">目录</button>
+      <button class="pager pager--prev" id="pgPrev" type="button" aria-label="上一页">‹</button>
+      <button class="pager pager--next" id="pgNext" type="button" aria-label="下一页">›</button>
+      <p class="stage__folio" id="folio">Page 1 / 7</p>
     </div>
   </div>
 </section>
@@ -437,7 +494,7 @@
 
 <!-- ============ 联系 ============ -->
 <section class="below" id="contact">
-  <div class="panel panel--dark">
+  <div class="panel">
     <p class="section-kicker">Contact · 联系</p>
     <h2 class="section-title">如果这些作品打动你</h2>
     <div class="contact-grid">
